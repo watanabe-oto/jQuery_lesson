@@ -103,10 +103,10 @@
         $('.select').change(SelectionList);
 
         function SelectionList() {
-          var a = $(this).val();
+          var selectedCategory = $(this).val();
           $('.list li').each(function (index, element){
-            var b = $(element).data('category-type');
-            if ( a === 'all' || a === b ) {
+            var itemCategory = $(element).data('category-type');
+            if ( selectedCategory === 'all' || selectedCategory === itemCategory ) {
               $(element).show();
             } else {
               $(element).hide();
