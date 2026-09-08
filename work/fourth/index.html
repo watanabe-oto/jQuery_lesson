@@ -63,13 +63,12 @@
       // ※必ずレビュー前に上記挙動が問題ないか確認すること
       $(function () {
         $('.menu__list > li').hover(openMenu, closeMenu);
-
-          function openMenu() {
-            $(this).children('.menu__list__childList').stop().slideDown();
-          }
-          function closeMenu() {
-            $(this).children('.menu__list__childList').stop().slideUp();
-          }
+        function openMenu() {
+          $(this).children('.menu__list__childList').stop().slideDown();
+        }
+        function closeMenu() {
+          $(this).children('.menu__list__childList').stop().slideUp();
+        }
       });
     </script>
   </body>

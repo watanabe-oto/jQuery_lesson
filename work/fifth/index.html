@@ -101,11 +101,10 @@
       // eachには引数を二つ持たせることができ、第一引数はDOM要素のインデックス番号、第二引数ではDOM要素自体が取得できます
       $(function () {
         $('.select').change(SelectionList);
-
         function SelectionList() {
-          var selectedCategory = $(this).val();
+          let selectedCategory = $(this).val();
           $('.list li').each(function (index, element){
-            var itemCategory = $(element).data('category-type');
+            let itemCategory = $(element).data('category-type');
             if ( selectedCategory === 'all' || selectedCategory === itemCategory ) {
               $(element).show();
             } else {
