@@ -40,7 +40,7 @@
                     $('div').html('<p class="name">ゲットしました</p><div><img class="img" src="'+ pokemonBall +'" alt=""></div><button class="btn" data-js="reset">戻る</button>');
                   });
                 } else {
-                    $('div').html('<p class="text">逃げられてしまった...</p><button class="btn mt" data-js="reset">戻る</button>');
+                  $('div').html('<p class="text">逃げられてしまった...</p><button class="btn mt" data-js="reset">戻る</button>');
                 };
                 $('#wrapper').on('click', '[data-js="reset"]', function() {
                   $('div').html('<button type="button" class="btn search-btn" id="pokemon_search">ポケモンを探す</button>');
