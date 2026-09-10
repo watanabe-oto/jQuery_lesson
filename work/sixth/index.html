@@ -20,7 +20,7 @@
         const randomNum = Math.floor(Math.random() * ((100 + 1) - 1 ) + 1);
         $.ajax({
           url:'https://pokeapi.co/api/v2/pokemon/' + randomNum,
-          type:'GET',
+          method:'GET',
         }).done((res) => {
           const pokemonImage = (res.sprites.front_default);
           const pokemonDetails = (res.species.url);
