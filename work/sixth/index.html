@@ -15,7 +15,48 @@
   </div>
   <script src="../../common/js/jquery.js"></script>
   <script>
-    // 回答はここに書いてね
+    $(function () {
+      $('#wrapper').on('click', '#pokemon_search', function() {
+        const randomNum = Math.floor(Math.random() * ((151 + 1) - 1 ) + 1);
+        $.ajax({
+          url:`https://pokeapi.co/api/v2/pokemon/${randomNum}`,
+          method:'GET',
+        }).done((res) => {
+          const pokemonImage = (res.sprites.front_default);
+          const pokemonDetails = (res.species.url);
+          $.ajax({
+            url: pokemonDetails,
+            method: 'GET'
+          }).done((res) => {
+            const pokemonName = res.names[0].name;
+            $('div').html(`<p class="name">${pokemonName}</p><div><img class="img" src="${pokemonImage}" alt=""></div><div><button class="btn" id="catch">捕まえる</button><button class="btn" data-js="reset">逃げる</button</div>`);
+            $('#wrapper').on('click', '#catch', function() {
+              const isGet = Math.random() < 0.5;
+              if (isGet) {
+                $.ajax({
+                  url: 'https://pokeapi.co/api/v2/item/4',
+                  method: 'GET'
+                }).done((res) => {
+                  const pokemonBall = (res.sprites.default);
+                  $('div').html(`<p class="name">ゲットしました</p><div><img class="img" src="${pokemonBall}" alt=""></div><button class="btn" data-js="reset">戻る</button>`);
+                }).fail((err) => {
+                  console.log('エラーが発生しました');
+                });
+              } else {
+                $('div').html('<p class="text">逃げられてしまった...</p><button class="btn mt" data-js="reset">戻る</button>');
+              };
+              $('#wrapper').on('click', '[data-js="reset"]', function() {
+                $('div').html('<button type="button" class="btn search-btn" id="pokemon_search">ポケモンを探す</button>');
+              });
+            });
+          }).fail((err) => {
+            console.log('エラーが発生しました');
+          });
+        }).fail((err) => {
+          console.log('エラーが発生しました');
+        });
+      });
+    });
   </script>
 </body>
 </html>
