@@ -31,8 +31,8 @@
             const pokemonName = res.names[0].name;
             $('div').html(`<p class="name">${pokemonName}</p><div><img class="img" src="${pokemonImage}" alt=""></div><div><button class="btn" id="catch">捕まえる</button><button class="btn" data-js="reset">逃げる</button</div>`);
             $('#wrapper').on('click', '#catch', function() {
-              const isGet = Math.random();
-              if (isGet < 0.5) {
+              const isGet = Math.random() < 0.5;
+              if (isGet) {
                 $.ajax({
                   url: 'https://pokeapi.co/api/v2/item/4',
                   method: 'GET'
